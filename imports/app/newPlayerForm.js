@@ -1,6 +1,6 @@
 import { Input, Form, Button } from 'antd';
 import React, { Component } from 'react';
-import { Players } from './api';
+import { Players } from '../api';
 import { get } from 'lodash';
 
 class NewPlayerForm extends Component {
@@ -21,11 +21,11 @@ class NewPlayerForm extends Component {
 
     render() {
         return (
-            <Form style={{margin:'20px 0'}} onSubmit={this.handleSubmit.bind(this)}>
-                <Form.Item {...this.state}>
-                    <div style={{ display: 'flex' }}>
-                        <Input style={{width:'24%'}} placeholder='New player' name='playerName' />
-                        <Button shape='circle' icon='check' htmlType='submit' />
+            <Form onSubmit={this.handleSubmit.bind(this)}>
+                <Form.Item {...this.state} >
+                    <div className='input-button'>
+                        <Input placeholder='Player name' name='playerName' />
+                        <Button type='primary' htmlType='submit' >Add player</Button>
                     </div>
                 </Form.Item>
             </Form>

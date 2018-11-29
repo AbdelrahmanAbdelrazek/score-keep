@@ -1,0 +1,27 @@
+.Layout{
+    text-align: center;
+    display: grid;
+    grid-template-rows: 7vh auto;
+    grid-gap: 10px
+}
+  
+.Header{
+    margin-bottom:0 20px;
+    background: #c80000;
+}
+  
+.Header>h1{
+    color:white;
+}
+  
+.Content{
+    text-align: center;
+    margin: auto;
+    width: 50%;
+    display: grid;
+    grid-gap: 10px;
+}
+
+.Content .input-button{
+    display: flex;
+}

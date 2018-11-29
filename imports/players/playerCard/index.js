@@ -7,7 +7,7 @@ class Player extends Component {
     render() {
         const { points, name, place, avatarUrl, _id } = this.props; //"https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" 
         return (
-            <Card style={{ width: 300, marginTop: 16 }}
+            <Card
                 actions={
                     playerActions.map(({ name, icon, onClick }) =>
                         <Button
