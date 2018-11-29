@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import PlayerCard from '../../../components/playerCard';
+import PlayerCard from '../playerCard';
 import { uniq, sortBy } from 'lodash';
-import { Players } from '../../../../api';
+import { Players } from '../../../api';
 import { Tracker } from 'meteor/tracker';
 
 class renderPlayers extends Component {
@@ -10,7 +10,7 @@ class renderPlayers extends Component {
         this.state = {};
     }
 
-    componentDidMount(){
+    componentDidMount() {
         Tracker.autorun(() => {
             const players = Players.find().fetch();
             this.setState({ players: this.addPlaceToPlayers(players) });
@@ -25,7 +25,7 @@ class renderPlayers extends Component {
 
     render() {
         return (
-            (this.state.players||[]).map(player =>
+            (this.state.players || []).map(player =>
                 <PlayerCard key={player._id} {...player} />)
         );
     }

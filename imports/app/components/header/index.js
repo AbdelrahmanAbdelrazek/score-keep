@@ -1,5 +1,6 @@
 import React from 'react';
 import { Layout } from 'antd';
+import PropTypes from 'prop-types';
 import './style.css';
 const { Header:HeaderAntd } = Layout;
 
@@ -11,5 +12,9 @@ const Header = (props) => {
         </HeaderAntd>
     );
 };
+
+Header.propTypes={
+    title: PropTypes.string.isRequired
+}
 
 export default Header;

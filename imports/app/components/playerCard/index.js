@@ -1,12 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Card, Avatar, Button } from 'antd';
 import playerActions from './playerActions';
+import PropTypes from 'prop-types';
+
 const { Meta } = Card;
 
 const Player = (props) => {
-    const { points, name, place, avatarUrl, _id } = props; //"https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" 
+    const { points, name, place, avatarUrl, _id } = props;
     return (
-        <Card
+        <Card style={{minWidth:'250px'}}
             actions={
                 playerActions.map(({ name, icon, onClick }) =>
                     <Button
@@ -25,5 +27,13 @@ const Player = (props) => {
         </Card>
     );
 };
+
+Player.propTypes = {
+    name: PropTypes.string.isRequired,
+    _id: PropTypes.string.isRequired,
+    points: PropTypes.number.isRequired,
+    avatarUrl: PropTypes.string,
+    place: PropTypes.number.isRequired,
+}
 
 export default Player;

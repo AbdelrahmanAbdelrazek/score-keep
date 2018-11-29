@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from './containers/header';
-import Content from './containers/content';
+import Header from './components/header';
+import Content from './components/content';
 import {Layout} from 'antd';
 import 'antd/dist/antd.css';
 import './style.css';

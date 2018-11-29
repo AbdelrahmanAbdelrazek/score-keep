@@ -1,6 +1,6 @@
 import { Input, Form, Button } from 'antd';
 import React, { Component } from 'react';
-import { Players } from '../../../api';
+import { Players } from '../../api';
 import { get } from 'lodash';
 
 class NewPlayerForm extends Component {

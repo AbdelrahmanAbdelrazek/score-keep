@@ -1,6 +1,6 @@
 import React from 'react';
-import PlayerList from './players';
-import NewPlayerForm from '../../components/newPlayerForm';
+import PlayerList from './playerList';
+import NewPlayerForm from '../newPlayerForm';
 import { Layout } from 'antd';
 import './style.css';
 const { Content:ContentAntd } = Layout;
