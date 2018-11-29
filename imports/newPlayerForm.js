@@ -1,12 +1,13 @@
 import { Input, Form, Button } from 'antd';
 import React, { Component } from 'react';
 import { Players } from './api';
+import { get } from 'lodash';
 
 class NewPlayerForm extends Component {
-    state={}
-    addNewPlayer(e) {
+    state = {}
+    handleSubmit(e) {
         e.preventDefault();
-        const {name} = this.state;
+        const name = get(e, 'target.playerName.value')
         if (!name) {
             this.setState({ help: 'Please enter a name', validateStatus: 'error' });
             return
@@ -20,10 +21,12 @@ class NewPlayerForm extends Component {
 
     render() {
         return (
-            <Form onSubmit={this.addNewPlayer.bind(this)}>
+            <Form style={{margin:'20px 0'}} onSubmit={this.handleSubmit.bind(this)}>
                 <Form.Item {...this.state}>
-                    <Input placeholder='New player' onChange={e=>this.setState({name:e.target.value})}/>
-                    <Button shape='circle' icon='check-circle' htmlType='submit'  />
+                    <div style={{ display: 'flex' }}>
+                        <Input style={{width:'24%'}} placeholder='New player' name='playerName' />
+                        <Button shape='circle' icon='check' htmlType='submit' />
+                    </div>
                 </Form.Item>
             </Form>
         );

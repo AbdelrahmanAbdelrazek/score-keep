@@ -1,19 +1,25 @@
-import {Players} from '../../api';
+import { Players } from '../../api';
 
 export default [
     {
         name: 'addOnePoint',
-        icon: 'plus-circle',
-        onClick: id => Players.update(id, {$inc:{points: 1}})
+        icon: 'plus',
+        onClick(id) {
+            Players.update(id, { $inc: { points: 1 } })
+        }
     },
     {
         name: 'subOnePoint',
-        icon: 'minus-circle',
-        onClick: id => Players.update(id, {$inc:{points: -1}})
+        icon: 'minus',
+        onClick(id) {
+            Players.update(id, { $inc: { points: -1 } })
+        }
     },
     {
         name: 'removePlayer',
-        icon: 'close-circle',
-        onClick: id => Players.remove(id)
+        icon: 'close',
+        onClick(id) {
+            Players.remove(id);
+        }
     }
 ]
