@@ -1,4 +1,4 @@
-import { Players } from '../../api';
+import { Players } from '../../../api';
 
 export default [
     {

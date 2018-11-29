@@ -1,0 +1,12 @@
+
+.Content{
+    text-align: center;
+    margin: auto;
+    width: 50%;
+    display: grid;
+    grid-gap: 10px;
+}
+
+.Content .input-button{
+    display: flex;
+}

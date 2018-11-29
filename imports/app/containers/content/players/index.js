@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import PlayerCard from './playerCard';
+import PlayerCard from '../../../components/playerCard';
 import { uniq, sortBy } from 'lodash';
-import { Players } from '../api';
+import { Players } from '../../../../api';
 import { Tracker } from 'meteor/tracker';
 
 class renderPlayers extends Component {
