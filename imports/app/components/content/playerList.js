@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PlayerCard from '../playerCard';
-import { uniq, sortBy } from 'lodash';
+import { uniq } from 'lodash';
 import { Players } from '../../../api';
 import { Tracker } from 'meteor/tracker';
 
@@ -12,21 +12,23 @@ class renderPlayers extends Component {
 
     componentDidMount() {
         Tracker.autorun(() => {
-            const players = Players.find().fetch();
-            this.setState({ players: this.addPlaceToPlayers(players) });
+            const sortedPlayers = Players.find({},{sort:{points:-1}}).fetch();
+            this.setState({ players: this.addPlaceToPlayers(sortedPlayers) });
         })
     }
 
-    addPlaceToPlayers(players) {
-        const scores = uniq(players.map(player => player.points)).sort().reverse();
-        const playersWithPlace = players.map(player => ({ ...player, place: scores.indexOf(player.points) + 1 }));
-        return sortBy(playersWithPlace, player => player.place);
+    addPlaceToPlayers(sortedPlayers) {
+        const scores = uniq(sortedPlayers.map(player => player.points));
+        const playersWithPlace = sortedPlayers.map(player => ({ ...player, place: scores.indexOf(player.points) + 1 }));
+        return playersWithPlace;
     }
 
     render() {
+        const {players=[]} = this.state;
         return (
-            (this.state.players || []).map(player =>
-                <PlayerCard key={player._id} {...player} />)
+            players.length? players.map(player =>
+                <PlayerCard key={player._id} {...player} />) :
+                <p>Add your first player to get started!</p>
         );
     }
 }
