@@ -1,7 +1,8 @@
-.Layout{
+
+.Content{
     text-align: center;
+    margin: auto;
+    width: 50%;
     display: grid;
-    grid-template-rows: 9vh auto;
     grid-gap: 10px;
 }
-  

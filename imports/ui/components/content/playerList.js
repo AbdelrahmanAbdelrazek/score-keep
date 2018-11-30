@@ -12,7 +12,7 @@ class renderPlayers extends Component {
 
     componentDidMount() {
         Tracker.autorun(() => {
-            const sortedPlayers = Players.find({},{sort:{points:-1}}).fetch();
+            const sortedPlayers = Players.find({}, { sort: { points: -1 } }).fetch();
             this.setState({ players: this.addPlaceToPlayers(sortedPlayers) });
         })
     }
@@ -24,11 +24,13 @@ class renderPlayers extends Component {
     }
 
     render() {
-        const {players=[]} = this.state;
+        const { players = [] } = this.state;
         return (
-            players.length? players.map(player =>
+            players.length ? players.map(player =>
                 <PlayerCard key={player._id} {...player} />) :
-                <p>Add your first player to get started!</p>
+                <div className='item'>
+                    <p className='item__message'>Add your first player to get started!</p>
+                </div>
         );
     }
 }

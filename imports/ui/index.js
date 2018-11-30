@@ -3,7 +3,6 @@ import Header from './components/header';
 import Content from './components/content';
 import {Layout} from 'antd';
 import 'antd/dist/antd.css';
-import './style.css';
 
 const App = () => {
     return (
