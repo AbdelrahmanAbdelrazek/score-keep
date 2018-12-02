@@ -23,9 +23,9 @@ class renderPlayers extends Component {
         const players = sortedPlayers.map(player => ({ ...player, place: scores.indexOf(player.points) + 1 }));
         return { players, flipKey: players.map(p => p._id).join("") };
     }
+
     renderPlayers() {
         const { players = [], flipKey } = this.state;
-        console.log(flipKey, players);
         return <Flipper flipKey={flipKey}>
             {players.map(player =>
                 <Flipped key={player._id} flipId={player._id}>
