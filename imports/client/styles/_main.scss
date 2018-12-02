@@ -1,0 +1,17 @@
+body {
+    padding: 10px;
+    font-family: sans-serif;
+}
+  
+.Layout{
+    text-align: center;
+    display: grid;
+    grid-template-rows: 9vh auto;
+    grid-gap: 10px;
+}
+  
+@import './components/header';
+@import './components/content';
+@import './components/player-card';
+@import './components/new-player-form';
+@import './components/item';

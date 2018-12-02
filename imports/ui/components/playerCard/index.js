@@ -8,10 +8,10 @@ const { Meta } = Card;
 const Player = (props) => {
     const { points, name, place, avatarUrl, _id } = props;
     return (
-        <Card style={{minWidth:'250px'}}
+        <Card className='player-card'
             actions={
                 playerActions.map(({ name, icon, onClick }) =>
-                    <Button
+                    <Button className='player-card__action-buttons'
                         key={name}
                         shape='circle'
                         {...{ icon }}
@@ -20,9 +20,9 @@ const Player = (props) => {
                 )}
         >
             <Meta
-                avatar={<Avatar src={avatarUrl} />}
-                title={name}
-                description={`${place} place. (${points} points)`}
+                avatar={<Avatar className='player-card__avatar' src={avatarUrl} />}
+                title={<p className='player-card__name'>{name}</p>}
+                description={<p className='player-card__stats'>{`${place} place. (${points} points)`}</p>}
             />
         </Card>
     );

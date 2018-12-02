@@ -37,7 +37,9 @@ class renderPlayers extends Component {
         const { players = [] } = this.state;
         return (
             players.length ? this.renderPlayers() :
-                <p>Add your first player to get started!</p>
+                <div className='item'>
+                    <p className='item__message'>Add your first player to get started!</p>
+                </div>
         );
     }
 }

@@ -23,8 +23,8 @@ class NewPlayerForm extends Component {
         return (
             <Form onSubmit={this.handleSubmit.bind(this)}>
                 <Form.Item {...this.state} >
-                    <div className='input-button'>
-                        <Input placeholder='Player name' name='playerName' />
+                    <div className='new-player-form'>
+                        <Input className='new-player-form__input' placeholder='Player name' name='playerName' />
                         <Button type='primary' htmlType='submit' >Add player</Button>
                     </div>
                 </Form.Item>
