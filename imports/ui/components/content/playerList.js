@@ -3,6 +3,7 @@ import PlayerCard from '../playerCard';
 import { uniq } from 'lodash';
 import { Players } from '../../../api';
 import { Tracker } from 'meteor/tracker';
+import { Flipper, Flipped } from "react-flip-toolkit";
 
 class renderPlayers extends Component {
     constructor(props) {
@@ -13,21 +14,29 @@ class renderPlayers extends Component {
     componentDidMount() {
         Tracker.autorun(() => {
             const sortedPlayers = Players.find({}, { sort: { points: -1 } }).fetch();
-            this.setState({ players: this.addPlaceToPlayers(sortedPlayers) });
+            this.setState(this.addPlaceToPlayers(sortedPlayers));
         })
     }
 
     addPlaceToPlayers(sortedPlayers) {
         const scores = uniq(sortedPlayers.map(player => player.points));
-        const playersWithPlace = sortedPlayers.map(player => ({ ...player, place: scores.indexOf(player.points) + 1 }));
-        return playersWithPlace;
+        const players = sortedPlayers.map(player => ({ ...player, place: scores.indexOf(player.points) + 1 }));
+        return { players, flipKey: players.map(p => p._id).join("") };
     }
-
+    renderPlayers() {
+        const { players = [], flipKey } = this.state;
+        console.log(flipKey, players);
+        return <Flipper flipKey={flipKey}>
+            {players.map(player =>
+                <Flipped key={player._id} flipId={player._id}>
+                    <div><PlayerCard {...player} /></div>
+                </Flipped>)}
+        </Flipper>
+    }
     render() {
         const { players = [] } = this.state;
         return (
-            players.length ? players.map(player =>
-                <PlayerCard key={player._id} {...player} />) :
+            players.length ? this.renderPlayers() :
                 <div className='item'>
                     <p className='item__message'>Add your first player to get started!</p>
                 </div>
